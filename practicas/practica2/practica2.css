@@ -1,7 +1,11 @@
+body h1 {
+  text-align: center;
+}
+
 .cuadrado-wrapp {
-  background-color: gray;
-  width: 25vw;
-  height: 25vw;
+  background-color: green;
+  width: 50vw;
+  height: 50vh;
   margin-left: auto;
   margin-right: auto;
 }
@@ -26,31 +30,84 @@
   justify-content: space-between;
 }
 
+.align-center {
+  align-items: center;
+}
+
 .column {
   flex-direction: column;
 }
 
-.align-end {
+.marg10 {
+  margin-left: 10px;
+}
+
+.marg10right {
+  margin-right: 10px;
+}
+
+.flex-end {
   justify-content: flex-end;
 }
 
-.space-around {
-  justify-content: space-around;
+.left-cont {
+  width: 20%;
+  height: 90%;
+  margin-left: 2%;
+  background: radial-gradient(red 20%, yellow 50%, #1e90ff 50%);
+}
+
+.right-cont {
+  width: 20%;
+  height: 90%;
+  margin-right: 2%;
+  background: radial-gradient(red 20%, yellow 50%, #1e90ff 50%);
 }
 
 .space-evenly {
   justify-content: space-evenly;
 }
 
-h1 {
-  text-align: center;
+.ej6-bottom {
+  width: 90%;
+  height: 15%;
+  background: radial-gradient(red 20%, yellow 50%, #1e90ff 50%);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3%;
 }
 
-.posicion-relativa {
-  position: relative;
+.just-center {
+  justify-content: center;
 }
 
-.hacia-izq {
-  position: absolute;
-  left: 10px;
+.ej6-center {
+  width: 90%;
+  height: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center-block {
+  width: 48%;
+  background: radial-gradient(red 20%, yellow 50%, #1e90ff 50%);
+}
+
+.ej6-top {
+  width: 90%;
+  height: 15%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3%;
+}
+
+.cuadrados-ej6 {
+  height: auto;
+  width: 15%;
+  background: radial-gradient(red 20%, yellow 50%, #1e90ff 50%);
+}
+
+.rect {
+  width: 60%;
+  background: radial-gradient(red 20%, yellow 50%, #1e90ff 50%);
 }/*# sourceMappingURL=practica2.css.map */
