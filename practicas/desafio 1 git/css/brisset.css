@@ -1,0 +1,53 @@
+@media only screen and (min-width: 700px) {
+  .More {
+    margin-top: 1rem;
+    padding-left: 2rem;
+  }
+  .More p {
+    color: gray;
+  }
+
+  .redesSociales {
+    display: flex;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+
+  .myTag {
+    display: flex;
+    margin-bottom: 7rem;
+    justify-content: space-between;
+  }
+
+  .tex-img {
+    text-align: center;
+    color: blue;
+    cursor: pointer;
+    -webkit-animation-duration: 3s;
+            animation-duration: 3s;
+    margin-bottom: 2rem;
+    margin-top: 15px;
+  }
+
+  .pegatinas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    height: auto;
+  }
+  .pegatinas .img-2 {
+    background-image: url(../img/57390242_386431405416711_440644832181536446_n.jpg__nc_ht=scontent-lga3-1.cdninstagram.com);
+    width: 100%;
+    height: auto;
+    min-height: 180px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    -webkit-animation-duration: 3s;
+            animation-duration: 3s;
+  }
+}/*# sourceMappingURL=brisset.css.map */

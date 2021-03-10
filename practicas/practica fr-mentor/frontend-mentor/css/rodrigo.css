@@ -1,0 +1,60 @@
+.latest-articles {
+  background-color: #fafafa;
+  width: 100vw;
+  height: 80vh;
+}
+
+.latest-articles .section5 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+}
+
+.latest-articles .article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  padding-top: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.latest-articles .article .card {
+  background: #FFFFFF;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 22%;
+  border-radius: 5px;
+}
+
+.latest-articles .article .card img {
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  height: 200px;
+}
+/*# sourceMappingURL=rodrigo.css.map */

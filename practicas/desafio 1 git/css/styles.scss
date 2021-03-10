@@ -1,0 +1,199 @@
+
+* {
+    margin:0;
+    padding:0;
+    color: black;
+}
+
+body {
+    background-color:#eef0f1;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';;
+}
+
+p {font-size: 10px;} 
+h1 {font-size: 55px;}
+h2 {font-size: 40px;
+    line-height: 44px;}
+h3 {font-size: 10px;} 
+
+@media only screen and (min-width: 0px) {
+    .section-mobile {
+        display: block;
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
+        padding: 0;
+    }
+
+    .section-uno{
+        width: auto;
+        height: auto;
+        padding: 0;
+        .container {
+            display: flex;
+            width: 100%;
+                .column-uno {
+                    display: none;
+                    width: calc((100%/12)*2);
+                    margin-right: 10px;
+
+                }
+                .column-dos {
+                    display: block;
+                    width: auto;
+                    height: auto;
+                }
+
+                .column-tres {
+                    display: none;
+                    width: calc((100%/12)*3);
+
+                }
+        }
+    }
+
+    .page-article {
+        width: auto;
+        height: auto;
+        padding: 0;
+            .container {
+                display: flex;
+                width: 100%;
+                .column-uno {
+                    display: none;
+                }
+                .column-dos {
+                    display: block;
+                    width: auto;
+                    height: auto;
+                }
+                .column-tres {
+                    display: none;
+                }
+            }
+    }
+
+    #article-box {
+        padding: 15px 75px;
+    }
+}
+
+
+@media only screen and (min-width: 768px) { 
+    .section-mobile {
+        display: none;
+    }
+
+    .section-uno {
+        padding: 0;
+        .container {
+            display: flex;
+            width: 100%;
+                .column-uno {
+                    display: none;
+                    width: calc((100%/12)*2);
+
+                }
+                .column-dos {
+                    display: block;
+                    width: auto;
+                    height: auto;
+                }
+
+                .column-tres {
+                    display: none;
+
+
+                }
+        }
+    }
+
+    .page-article {
+        padding: 0 calc((100%/100)*1);
+        .container {
+            display: flex;
+            width: 100%;
+                .column-uno {
+                    display: block;
+                    width: calc((100%/12)*2);
+                }
+                .column-dos {
+                    display: block;
+                    width: calc((100%/12)*10);
+                }
+                .column-tres {
+                    display: none;
+                }
+        }
+    }
+
+}
+
+@media only screen and (min-width: 1000px) { 
+    .section-mobile {
+        display: none;
+    }
+    .section-uno {
+        padding: 0 calc((100%/100)*1);
+        .container {
+            .column-uno, .column-tres {
+                display: block;
+            }
+            .column-dos {
+                width: calc((100%/12)*7);
+            }
+        }  
+    }
+
+    .page-article {
+        padding: 0 calc((100%/100)*2);
+        .container {
+                .column-uno {
+                    display: block;
+                    width: calc((100%/12)*1);
+                }
+                .column-dos {
+                    display: block;
+                    width: calc((100%/12)*8);
+                }
+                .column-tres {
+                    display: block;
+                    width: calc((100%/12)*3);
+
+                }
+        }
+    }
+
+}
+
+
+@media only screen and (min-width: 1200px) { 
+    .section-mobile {
+        display: none;
+    }
+
+    .section-uno {
+        padding: 0 calc((100%/100)*3);
+    }
+
+    .page-article {
+        padding: 0 calc((100%/100)*3);
+            .container {
+                    .column-uno {
+                        display: block;
+                        width: calc((100%/12)*1);
+                    }
+                    .column-dos {
+                        display: block;
+                        width: calc((100%/12)*8);
+                    }
+                    .column-tres {
+                        display: block;
+                        width: calc((100%/12)*3);
+
+                    }
+            }
+    }
+
+    
+}

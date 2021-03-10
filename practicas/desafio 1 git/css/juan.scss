@@ -1,0 +1,406 @@
+$black: #000000;
+$blue: rgb(25, 25, 205);
+$gray: rgb(113, 113, 113);
+$boder-color:#dedede; 
+$gray-whitesmoke:whitesmoke;
+
+@media only screen and (min-width: 0px) { 
+
+            .mobile-icons-bottom {
+                width: auto;
+                background-color: $gray-whitesmoke;
+                height: auto;
+                padding: 15px 25px 15px;
+                border-top: thin solid #dedede;
+                    .icon-list {
+                        display: flex;
+                        align-items: start;
+                        justify-content: space-around;
+                        box-sizing: content-box;
+                            .icon-box {
+                                display: contents;
+                                    .icon {
+                                        display: block;
+                                            p {}
+                                    }
+                            }
+                    }
+            }
+
+
+
+            .subnav-mobile {
+                display: flex;
+                justify-content: start;
+                padding: 10px 10px 2px;
+
+                    .section-title {
+                        margin-right: auto;
+                        display: flex;
+                        align-items: center;
+                            H1 {
+                                font-size: 20px;
+                                font-weight: 600;
+                            }
+                    }
+
+                    select {
+                        background-color: white;
+                        border: thin solid $boder-color;
+                        border-radius: 7px;
+                        padding: 10px 25px 10px 8px;
+                        margin-right: 14px;
+                        display: flex;
+                        align-content: center;
+                        /*appearance: unset;*/
+                    }
+
+            }
+            .subnav {
+                display: none;
+                padding: 10px 10px 4px;
+                justify-content: start;
+                height: 35px;
+                
+                    H1 {
+                        color: $black;
+                        font-size: 22px;
+                        margin-right: auto;
+                        padding: 5px 0;
+                        font-weight: 600;
+                    }
+                    .subnav-bar {
+                        display: flex;
+                        a {
+                            padding: 10px;
+                            color: $black;
+                            height: 20px;
+                            &.active{ 
+                                border-bottom: 3px solid $blue;
+                                padding: 10px 0px;
+                                    &:hover {
+                                        padding: 10px 10px;
+                                        background-color: #174ece14;
+                                        border-radius: 6px 6px 0px 0px;
+                                    }
+                            }
+                            &:hover {
+                                border-bottom: 3px solid blue;
+                            }
+                        }
+                    }
+            }
+            .row{
+                display: block;
+                padding: 0px;
+                margin: 0px;
+                width: auto;
+                height: auto;
+                    .article-entry {
+                        margin: 5px auto 15px;
+                        display: block;
+                        height: auto;
+                        /*min-height: 650px;*/
+                        min-height: 505px;
+                        background-color: white;
+                        border-top: thin solid $boder-color;
+                        border-bottom: thin solid $boder-color;
+                            .cover {
+                                border-radius: 0;
+                                display: block;
+                                background-color: #f9fafa;
+                                background-size: cover;
+                                background-repeat: no-repeat;
+                                background-position: center;
+                                padding-bottom: 43%;
+                                &#uno {
+                                    background-image: url(https://res.cloudinary.com/practicaldev/image/fetch/s--S2f8n0g4--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/i4rttdp19eqxrthfzx40.png)
+                                }
+                                &#dos {
+                                    background-image: url(https://res.cloudinary.com/practicaldev/image/fetch/s--PeW_eXkH--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/oqig5zbu2m4pucvl94o2.png)
+                                }
+                                &#tres {
+                                    background-image: url(https://res.cloudinary.com/practicaldev/image/fetch/s--6rFGdRJR--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9gc18fb42jzilijelslx.png)
+                                }
+                                &#cuatro {
+                                    background-image: url(https://res.cloudinary.com/practicaldev/image/fetch/s--nZ_KByFJ--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/q9neiq2xdcavi1nd01gt.png)
+                                }
+                                &#cinco {
+                                    background-image: url(https://res.cloudinary.com/practicaldev/image/fetch/s--JwBTps9H--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/jkx6stw11np6wntvpi6n.png)
+                                }
+
+                            }
+                            #article-box.story { 
+                                display: block;
+                                    .title-title{
+                                        display: block;
+                                            H1 {
+                                                font-size: 55px !important;
+                                            }
+                                    }
+                            }
+                            .story {
+                                display: block;
+                                /*padding: 20px;*/
+                                padding: 20px 20px 10px 20px;
+                                .user {
+                                    display: flex;
+                                    margin-bottom: 10px;
+                                        .avatar {
+                                            display: block;
+                                            height: 30px;
+                                            width: 30px;
+                                            margin-right: 10px;
+                                                .icon-avatar {
+                                                    border: thin solid $boder-color;
+                                                    border-radius: 15px;
+                                                    width: 100%;
+                                                }
+                                        }
+                                        p {
+                                            display: block;
+
+                                        }
+ 
+                                }
+
+
+                                        p {
+                                            display: block;
+
+                                        }
+
+                                }
+                                .tag {
+                                    display: block;
+                                    ul {
+                                        color: #b4b4b4;
+                                        list-style: none;
+                                        display: flex;
+                                        font-weight: 300;
+                                        margin: 5px 0;
+                                        padding: 0;
+                                            li {
+                                                margin: 0 5px;
+                                                color: #cdcdcd;
+                                                font-size: 15px;
+                                                &:hover {
+                                                    color:#454444;
+                                                }
+                                            }
+                                    }
+                                }
+                                .social-interaction {
+                                    display: flex;
+                                    justify-content: start;
+                                        #reaction, #read {margin-right: 5px;}
+                                        #comment {
+                                            display: block;
+                                            margin-right: auto;
+                                        }
+                                        #save {
+                                            display: block;
+                                        }
+                                        #read {
+                                           font-size:10px; 
+                                        }
+
+                                }
+                                    .btn-social {
+                                        display: block;
+                                        background: white;
+                                        border: none;
+                                        padding: 5px 12px;
+                                        font-size: 15px;
+                                            &:hover {
+                                                background: #eef0f1;
+                                                border-radius: 6px;
+                                            }
+                                    }
+                                    .active {
+                                        background-color: #d9d9d9 !important;
+                                        border-radius: 6px;
+                                            &:hover {
+                                                background: #bbbbbb !important;
+                                            }
+                                    }
+                            }
+                            .comments {
+                                display: none;
+                                padding: 10px 10px 1px 10px;
+                                background-color: #eef0f1;
+                                    .user-comment {
+                                        display: flex;
+                                        margin-bottom: 10px;
+                                            .avatar-comment {
+                                                display: block;
+                                                height: 30px;
+                                                width: 30px;
+                                                margin-right: 10px;
+                                                    .icon-avatar-comment {
+                                                        border: thin solid $boder-color;
+                                                        border-radius: 15px;
+                                                        width: 100%;
+                                                    }
+                                            }       
+                                    }
+                                    p {
+                                        margin: 5px 0 25px;
+                                            &:nth-of-type(2) {
+                                                margin: 5px 0 15px;
+                                            }
+                                    }
+                    }
+                    .card-article {
+                        box-shadow: none !important;
+                        background-color: #f9fafa;
+                        border: thin solid $boder-color;
+                        border-radius: 7px !important;
+                        height: auto;
+                        min-height: 200px;
+                        margin-top: 5px !important;
+                        margin-bottom: 15px;
+                            .card-title {}
+                            .card-topic {
+                                display: block;
+                                font-size: 14px;
+                                color: $gray;
+                            }
+                            .card-btn {
+                                display: flex;
+                                justify-content: flex-end;
+                                padding: 10px;
+                            }
+                            .card-news {
+                                height: auto;
+                                padding: 10px;
+                                border-top: thin solid $boder-color;
+                                    &:hover {
+                                        background-color: #f2f2f2;
+                                    }
+                            }
+                            .card-create-listing {
+                                height: auto;
+                                padding: 10px;
+                                border-top: thin solid #dedede;
+                                text-align: center;
+                                    a {
+                                        text-decoration: none;
+                                        color: black;
+                                            &:hover {
+                                                color: purple;
+                                            }
+
+                                    }
+                            }
+                            .card-btn-tag {
+                                display: block;
+                                H2 {
+                                    font-size: 15px;
+                                    padding: 0 10px;
+
+                                }
+                            }
+                            .card-topic-icon {
+                                display: block;
+                                background: #3c4adf;
+                                color: white;
+                                border-radius: 4px;
+                                width: 14%;
+                                font-size: 12px;
+                                padding: 1px;
+                                text-align: center;
+                                font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+                            }
+                            .card-comment {
+                                display: block;
+                                font-size: 14px;
+                                color: gray;
+                            }
+                    }
+            }
+}
+@media only screen and (min-width: 768px) { 
+            .icon-list {
+                display: grid;
+                box-sizing: border-box;
+                justify-content: stretch;
+                height: 400px;
+                position: fixed;
+                padding: 25px;
+                .icon-box {
+                    display: grid;
+                    gap: initial;
+                    justify-content: stretch;
+                        .icon {
+                            display: block;
+                                p {
+                                    font-size: 14px;
+                                    text-align: center;
+                                    color:$gray;
+                                }
+                        }
+                }
+            }
+
+            .subnav-mobile{
+                display: none;
+            }
+            .subnav {
+                display: flex
+            }
+
+            .row{
+                padding: 5px;
+                margin: 5px;
+                    .article-entry {
+                        margin: 0px auto 19px;
+                        display: block;
+                        border-radius: 5px;
+                        box-shadow: 1px 3px 4px #8f8f8f;
+                        padding-bottom: 1px;
+                        min-height: 650px;
+                        border-top: none;
+                        border-bottom: none;
+                        
+                            .cover {
+                                display: block;
+                                border-radius: 5px 5px 0px 0;
+
+                            }
+                            #article-box.story {
+                                display: block;
+                                padding: 20px;
+                                .user {
+                                    h3 {display: block;}
+                                    p {display: block;}
+                                }
+                                .title-title{
+                                    display: block !important;
+                                    h1 {
+                                        display:block;
+                                        font-size: 55px !important;}
+                                }
+                                h2 {
+                                    display: block;
+                                }
+                                
+                                .tag {display: block;}
+                            }
+                            .comments {
+                                display: block;
+                                margin: 10px;
+                            }
+                    }
+
+            }
+
+}
+
+
+@media only screen and (min-width: 1200px) { 
+
+}
+
+
+  
