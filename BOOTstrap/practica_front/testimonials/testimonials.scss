@@ -1,0 +1,39 @@
+
+
+
+
+
+$light-grayish-blue: hsl(210, 46%, 95%);
+$Moderate-violet: hsl(263, 55%, 52%);
+$Very-dark-grayish-blue: hsl(217, 19%, 35%);
+$white: hsl(0, 0%, 100%);
+
+*{
+    font-size: 13px;
+    font-family: barlow semi condensed;
+    
+    font-weight: 500, 600;
+}
+.box-sizing{
+    box-sizing: border-box;
+}
+.bg-white{
+    background-color: $white;
+}
+.bg-very-blue{
+    background-color: $Very-dark-grayish-blue;
+}
+.bg-gray-blue{
+    background-color: $light-grayish-blue;
+}
+.flex-center{
+    justify-content: center;
+    align-items: center;
+}
+.img-size{
+    height: 40px;
+    width: 40px;
+}
+.bg-mv{
+    background-color: $Moderate-violet;
+}
