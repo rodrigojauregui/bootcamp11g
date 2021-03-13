@@ -1,13 +1,37 @@
 @media screen and (min-width: 992px) {
   .container {
-    width: 80vw;
-    height: 75vw;
+    width: 75%;
+    height: 50%;
   }
 }
 * {
   font-size: 13px;
   font-family: barlow semi condensed;
   font-weight: 500, 600;
+}
+
+.position-abs {
+  position: absolute;
+  top: 0;
+  right: 3rem;
+  z-index: -1;
+}
+
+.center {
+  justify-content: center;
+  align-items: center;
+}
+
+.shadow {
+  box-shadow: 4px 8px 25px -8px black;
+}
+
+.box-sizing {
+  box-sizing: border-box;
+}
+
+.bg-blackish {
+  background-color: #19212e;
 }
 
 .bg-white {
