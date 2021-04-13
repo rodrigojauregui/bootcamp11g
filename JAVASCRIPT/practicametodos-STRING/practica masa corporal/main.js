@@ -69,7 +69,19 @@ switch(true){
 }
 */
 
+function addTax (price){
+    const IVA = 1.16
+    let result = price * IVA
+    console.log (result)
+}
+addTax( 5 )
+addTax( 6 )
+addTax( 10 )
 
+
+let as = "a";
+let as = "b";
+console.log (as)
 
 
 
