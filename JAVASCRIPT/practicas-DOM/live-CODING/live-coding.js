@@ -11,7 +11,7 @@ const getAlbumData = () => {
 
     let select = document.getElementById("gender")
     let gender = select.options[select.selectedIndex].value
-
+    // solo se agrega lo que ya habia en albumObject, para eso se usa el operador de propagacion
     albumObject = {...albumObject,gender}
     console.log(albumObject)
 
@@ -57,6 +57,26 @@ const getAlbums = () => {
     return albumCollection
 }
 
+//funcion par aborrar mentores
+const deleteAlbums = event => {
+let albumKey = event.target.dataset.albumKey    
+
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+       console.log(xhttp.responseText)
+       printTable (getAlbums())
+      }
+    };
+    xhttp.open("DELETE",`https://ajaxclass-1ca34.firebaseio.com/11g/rodrigo/albums/${albumKey}.json`, true);
+    xhttp.send();
+
+
+
+
+
+}
+
 // funcion para impirmir en la tabla
 const printTable = (dataToPrint) => {
 
@@ -76,21 +96,33 @@ const printTable = (dataToPrint) => {
         let nameTd= document.createElement("td")
         let bandTd = document.createElement("td")
         let genderTd = document.createElement("td")
+        let buttonTd = document.createElement("td")
 
         let indexText = document.createTextNode(index)
         let nameText = document.createTextNode (name)
         let bandText = document.createTextNode(band)
         let genderText = document.createTextNode(gender)
+        
+        let deleteButton = document.createElement("button")
+        deleteButton.classList.add("btn", "btn-danger")
+        deleteButton.dataset.albumKey = key
+
+        let deleButtonText = document.createTextNode("delete")
+        deleteButton.appendChild(deleButtonText)
+
+        deleteButton.addEventListener("click", deleteAlbums )
 
         indexTd.appendChild(indexText)
         nameTd.appendChild(nameText)
         bandTd.appendChild(bandText)
         genderTd.appendChild(genderText)
+        buttonTd.appendChild(deleteButton)
 
         albumRow.appendChild(indexTd)
         albumRow.appendChild(nameTd)
         albumRow.appendChild(bandTd)
         albumRow.appendChild(genderTd)
+        albumRow.appendChild(buttonTd)
 
         table.appendChild(albumRow)
         index++
@@ -98,4 +130,10 @@ const printTable = (dataToPrint) => {
     }
 
 }
-printTable (getAlbums())
+
+
+
+
+
+
+

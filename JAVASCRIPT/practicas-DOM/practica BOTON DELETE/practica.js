@@ -1,4 +1,5 @@
 
+
 var mentorsArray = [
     {
         name:"Israel Salinas Martinez",
@@ -85,119 +86,208 @@ var mentorsArray = [
         ]
     }
 ]
-// se crea el table 
-let dataTable = document.createElement("table")
-dataTable.className="table table-striped "
-document.body.appendChild(dataTable)
 
-// se crea el table head
-let tableHeader = document.createElement("thead")
-dataTable.appendChild(tableHeader)
-
-// se crea el table body
-let tableBody = document.createElement("tbody")
-dataTable.appendChild(tableBody)
-
-// funcion para eliminar mentores
+let tableHeadArray = [
+    "#",
+    "NAME",
+    "HTML",
+    "CSS",
+    "JS",
+    "REACT",
+    "AVERAGE",
+    " "
+]
 
 
-
-const tableFunction = () => {
-
-    const deleteMentor = (event) => {
-        let mentorIndex = event.target.dataset.mentorIndex
-        mentorsArray.splice(mentorIndex,1)
-        console.log(mentorsArray)
-
-        tableBodyFunction()
-        
-    }
-          
-            
-            //se crea el thead
-            const tableHeaderFunction = () => {
-                
-                let tableHeaderRow = document.createElement("tr")
-                tableHeader.appendChild(tableHeaderRow)
-                let headerName = [ "MENTOR", "HTML", "CSS", "JS", "REACTJS", "average", "boton"]
-
-                headerName.forEach(item => {
-                    let rowHeader = document.createElement("th");
-                    tableHeaderRow.appendChild(rowHeader)
-                    let rowHeaderName = document.createTextNode(item)
-                    rowHeader.appendChild(rowHeaderName)
-                })
-            }
-
-            const tableBodyFunction = () => {
-                
-
-                mentorsArray.forEach((item, index) => {
-
-
-                    let tableBodyRow = document.createElement("tr")
-                    tableBody.appendChild(tableBodyRow)
-
-                    while(tableBodyRow.lastElementChild) {
-                        tableBodyRow.removeChild(tableBodyRow.lastElementChild)
-                    }
-                    
-
-                    // nombres de los mentores
-                    let nameRow = document.createElement("td")
-                    let nameRowText = document.createTextNode(item.name)
-                    nameRow.appendChild(nameRowText)
-                    tableBodyRow.appendChild(nameRow)
-
-                    //scores de los mentores
-                    item.scores.forEach(item => {
-                        let tableBodyRowScore = document.createElement("td")
-                        tableBodyRow.appendChild(tableBodyRowScore)
-                        let tableBodyRowScoreText = document.createTextNode(item.score)
-                        tableBodyRowScore.appendChild(tableBodyRowScoreText)
-                        item.score >= 9 ? tableBodyRowScore.classList.add("bg-warning") : tableBodyRowScore.classList.add("bg-success")
-                    })
-                    
-                    //se toma el average
-            
-                    let mentorsAverage = item.scores.reduce((accum,current) => accum + current.score,0)/item.scores.length
-
-                    let averageRow = document.createElement("td")
-                    tableBodyRow.appendChild(averageRow)
-                    let averageRowText = document.createTextNode(mentorsAverage)
-                    averageRow.appendChild(averageRowText)
-                    
-                    //se crea el boton
-                    let buttonTd = document.createElement("td")
-                    tableBodyRow.appendChild(buttonTd)
-                    let deleteButton= document.createElement("button")
-                    deleteButton.className = "btn btn-danger btn-delete"
-                    deleteButton.dataset.mentorIndex = index
-
-                    deleteButton.addEventListener("click", deleteMentor)
-                    let deleteButtonText = document.createTextNode("eliminar")
-                    deleteButton.appendChild(deleteButtonText)
-                    buttonTd.appendChild(deleteButton)
-                    
-                })
-
-
-
-            }
-        tableHeaderFunction()
-        tableBodyFunction()
+const deleteMentor = (event) => {
+    let mentorIndex = event.target.dataset.mentorIndex
+    mentorsArray.splice(mentorIndex,1)
+    printTable()
 }
-tableFunction()
 
-let bordersTable = document.querySelectorAll("#koders-list li")
+const printTable = () => {
 
 
-bordersTable.forEach( item => {
-    item.classList.add("list-group-item")
-    let itemText = item.innerText
-    itemText.length > 4 ? item.classList.add("bg-primary") : item.classList.add("bg-warning")
+    let table = document.getElementById("table-mentors")
+    table.classList.add("table",  "table-striped")
 
-})
+    while(table.lastElementChild) {
+        table.removeChild(table.lastElementChild)
+    }
+
+    
+
+    let tableHead = document.createElement("thead")
+    table.appendChild(tableHead)
+    tableHead.classList.add("thead-dark")
+
+    let tableBody = document.createElement("tbody")
+    table.appendChild(tableBody)
+
+    let tableFoot = document.createElement("tfoot")
+    table.appendChild(tableFoot)
+
+    const tableHeadFunction = () => {
+
+        let tableHeadRow = document.createElement("tr")
+        tableHead.appendChild(tableHeadRow)
+
+        tableHeadArray.forEach( item => {
+
+            let tableHeadTh = document.createElement("th")
+            tableHeadRow.appendChild(tableHeadTh)
+
+            let tableHeadThText = document.createTextNode(item)
+            tableHeadTh.appendChild(tableHeadThText)
+        })    
+    }
+    tableHeadFunction()
+
+    let globalAverage = 0;
+
+    const tableBodyFunction = () => {
+       
+        mentorsArray.forEach( (item,index) => {
+
+            //se crea el row
+            let tableBodyRow = document.createElement("tr")
+            tableBody.appendChild(tableBodyRow)
+
+            //se crea el row #
+            let tableBodyRowNumberTd = document.createElement("td")
+            tableBodyRow.appendChild(tableBodyRowNumberTd)
+
+            let tableBodyRowNumberTdText = document.createTextNode(index+1)
+            tableBodyRowNumberTd.appendChild(tableBodyRowNumberTdText)
+
+            // se cre el name td 
+            let tableBodyRowNameTd = document.createElement("td")
+            tableBodyRow.appendChild(tableBodyRowNameTd)
+
+            let tableBodyRowNameTdText = document.createTextNode(item.name)
+            tableBodyRowNameTd.appendChild(tableBodyRowNameTdText)
+
+            //se crean los scores td
+            item.scores.forEach( scores => {
+
+                let tableBodyRowScoresTd = document.createElement("td")
+                tableBodyRow.appendChild(tableBodyRowScoresTd)
+
+                let tableBodyRowScoresTdText = document.createTextNode(scores.score)
+                tableBodyRowScoresTd.appendChild(tableBodyRowScoresTdText)
+
+                let buttonLow = document.getElementById("low-score")
+                buttonLow.addEventListener("click", () => {
+                    if(scores.score >8){
+                        tableBodyRowScoresTd.classList.add("bg-dark")
+                    } else {
+                        tableBodyRowScoresTd.classList.add("bg-danger")
+                    }
+                })
+            })
+
+            //se genera el reduce
+            let tableBodyRowAverage= item.scores.reduce((accum,current) => accum + current.score/item.scores.length,0)
+            // se crean los average td
+            let tableBodyRowAverageTd = document.createElement("td")
+            tableBodyRow.appendChild(tableBodyRowAverageTd)
+            let tableBodyRowAverageTdText = document.createTextNode(tableBodyRowAverage)
+            tableBodyRowAverageTd.appendChild(tableBodyRowAverageTdText)
+
+            
+            //se crea el boton 
+            let buttonTd = document.createElement("td")
+            tableBodyRow.appendChild(buttonTd)
+            let deleteButton= document.createElement("button")
+            deleteButton.className = "btn btn-danger "
+            deleteButton.dataset.mentorIndex = index
+
+            deleteButton.addEventListener("click", deleteMentor)
+
+            let deleteButtonText = document.createTextNode("eliminar")
+            deleteButton.appendChild(deleteButtonText)
+            buttonTd.appendChild(deleteButton)
+
+            globalAverage +=  tableBodyRowAverage/mentorsArray.length
+
+        })
+    }
+    tableBodyFunction()
+
+    const footerFunction = () => {
+
+        let globalAverageFoot = document.createElement("tfoot")
+        table.appendChild(globalAverageFoot)
+        let globalAverageFootRow = document.createElement("tr")
+        globalAverageFoot.appendChild(globalAverageFootRow)
+        let globalAverageFootTd = document.createElement("td")
+        globalAverageFootRow.appendChild(globalAverageFootTd)
+        let globalAverageFootText = document.createTextNode(globalAverage.toFixed(2))
+        globalAverageFootTd.appendChild(globalAverageFootText)
+    }
+    footerFunction()
+
+}
+printTable()
+
+
+
+
+
+
+
+
+
+
+
+
+const getKoderName = () => {
+    let newObject = {}
+    let koderName = document.getElementById("koder-name").value
+    let scores = []
+    let a = {score: document.getElementById("koder-html").value}
+    let b = {score: document.getElementById("koder-css").value}
+    let c = {score: document.getElementById("koder-js").value}
+    let d = {score: document.getElementById("koder-reactjs").value}
+
+    newObject.name = koderName
+    newObject.scores = scores
+    newObject.scores.push(a)
+    newObject.scores.push(b)
+    newObject.scores.push(c)
+    newObject.scores.push(d)
+
+    console.log(newObject)
+
+    mentorsArray.push(newObject)
+
+    printTable()
+
+    document.getElementById("koder-name").value = " "
+    document.getElementById("koder-html").value = " "
+    document.getElementById("koder-css").value = " "
+    document.getElementById("koder-js").value= " "
+    document.getElementById("koder-reactjs").value = " "
+
+}
+
+document.getElementById("save-koder").addEventListener("click", getKoderName )
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -232,7 +322,8 @@ buttons.forEach(boton => {
         console.log(customKey)
     })
 })
-*/
+
+
 //los atributos personalizados en html los podemos crear a traves de data-custom-key = "blablabla"
 //los atriubutos personalizados que cree con "data" se guardan en una propiedad que se llama "dataset" 
 
@@ -254,220 +345,3 @@ document.getElementById("form-list").addEventListener("keyup", (event) => {
 })
 */
 
-
-let koderList = []
-
-
-
-const getKoderName = () => {
-
-
-    function KoderListFunction (name, html, css, js, reactjs){
-        this.name = name;
-        this.html = html;
-        this.css = css;
-        this.js = js;
-        this.reactjs = reactjs;
-    }
-
-    let koderName = document.getElementById("koder-name").value
-    let koderHtml = document.getElementById("koder-html").value
-    let koderCss = document.getElementById("koder-css").value
-    let koderJs = document.getElementById("koder-js").value
-    let koderReactJs = document.getElementById("koder-reactjs").value
-
-    const newKoderForm = new KoderListFunction (koderName, koderHtml, koderCss, koderJs, koderReactJs)
-
-    koderList.push(newKoderForm)
-
-    
-
-    while(koderList.lastElementChild) {
-        koderList.removeChild(koderList.lastElementChild)
-    }
-
-    printKoders()
-
-    document.getElementById("koder-name").value = " "
-    document.getElementById("koder-name").value = " "
-    document.getElementById("koder-html").value = " "
-    document.getElementById("koder-css").value = " "
-    document.getElementById("koder-js").value= " "
-    document.getElementById("koder-reactjs").value = " "
-
-}
-
-document.getElementById("save-koder").addEventListener("click", getKoderName )
-
-const printKoders = () => {
-
-    let newKoderRow= document.createElement("tr")
-    tableBody.appendChild(newKoderRow)
-
-    koderList.forEach( koder => {
-
-        let koderNameTd = document.createElement("td")
-        newKoderRow.appendChild(koderNameTd)
-        koderNameTd.innerText = koder.name
-
-        let koderHtmlTd = document.createElement("td")
-        newKoderRow.appendChild(koderHtmlTd)
-        koderHtmlTd.innerText = koder.html
-
-        let koderCssTd = document.createElement("td")
-        newKoderRow.appendChild(koderCssTd)
-        koderCssTd.innerText = koder.css
-
-        let koderJsTd = document.createElement("td")
-        newKoderRow.appendChild(koderJsTd)
-        koderJsTd.innerText = koder.js
-
-        let koderReactjsTd = document.createElement("td")
-        newKoderRow.appendChild(koderReactjsTd)
-        koderReactjsTd.innerText = koder.reactjs
-
-        let newKoderAverage = document.createElement("td")
-        newKoderRow.appendChild(newKoderAverage)
-
-
-        console.log(koder.html, koder.css, koder.js, koder.reactjs)
-        newKoderAverage.innerText = parseInt(koder.html + koder.css + koder.js + koder.reactjs)
-
-
-                    
-
-
-
-        
-        
-        
-        
-        
-        
-        /*let listItem = document.createElement("li")
-        let itemText = document.createTextNode(koder)
-
-        listItem.appendChild(itemText)
-        listItem.classList.add("list-group-item")
-
-        document.getElementById("new-ul").appendChild(listItem)
-        */
-    })
-
-}
-
-
-/*let dataTable = document.createElement("table")
-        dataTable.className="table table-striped "
-        document.body.appendChild(dataTable)*/
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
- let notesArray = [
-    {
-        signature: "español",
-        note: 8
-    },{
-        signature: "mate",
-        note: 9
-    },{
-        signature: "fisica",
-        note: 10
-    },{
-        signature: "ingles",
-        note: 7
-    }
- ]
-
- 
-const createList = () => {
-    //se crea el ul
-    let listNotes = document.createElement("ul")
-    listNotes.className = "list-group"
-    document.body.appendChild(listNotes)
-
-    const listNotesFunction = () => {
-        //se crean los lis
-        notesArray.forEach(item => {
-        let litsLists = document.createElement("li")
-        litsLists.className = "list-group-item"
-        listNotes.appendChild(litsLists)
-        let litsListsText = document.createTextNode(item.signature+":"+item.note)
-        litsLists.appendChild(litsListsText)
-
-        item.note > 8 ? litsLists.classList.add("bg-primary") : litsLists.classList.add("bg-warning")
-
-        })
-
-        
-    }
-    listNotesFunction()
-}
-
-createList()
-
-//se crea el boton 
-let buttonList = document.createElement("button")
-buttonList.setAttribute("type", "button")
-buttonList.className = "btn btn-dark"
-document.body.appendChild(buttonList)
-let deleteButtonText = document.createTextNode("eliminar")
-buttonList.appendChild(deleteButtonText)
-
-//se agrega el event listener
-buttonList.addEventListener("click", () =>{ 
-    console.log("hola")
-})
-*/
-
-
-
-/*
-let listNotes2 = document.createElement("ul")
-document.body.appendChild(listNotes2)
-
-const listNotesFunction2 = (materia, score) => {
-    
-    let litsLists2 = document.createElement("li")
-    litsLists2.classList.add("list-group-item")
-
-    listNotes2.appendChild(litsLists2)
-
-    let litsListsText2 = document.createTextNode(`${materia}: ${score} `)
-    litsLists2.appendChild(litsListsText2)
- 
-}
-
-listNotesFunction2("html",10)
-listNotesFunction2("js",9)
-*/

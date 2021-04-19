@@ -1,28 +1,33 @@
-let heading = document.createElement("h1")
-document.body.appendChild(heading)
 
-let headingText = document.createTextNode ("sometext")
-heading.appendChild(headingText)
-
+/*
 const namesArray = [
     "Jaime",
     "Beto",
     "mariana"
 ]
 
-
+let unorderedList = document.createElement("ul")
+unorderedList.classList.add("list-group")
+document.body.appendChild(unorderedList)
 
 const listArray = () => {
-    let unorderedList = document.createElement("ul")
-    document.body.appendChild(unorderedList)
+
+    
     namesArray.forEach(item =>{
         let listInside = document.createElement("li")
         unorderedList.appendChild(listInside)
+        listInside.classList.add("list-group-item")
         var listText = document.createTextNode (item)
         listInside.appendChild(listText)
     })
 }
 listArray()
+*/
+
+
+
+
+
 
 var mentorsArray = [
     {
@@ -110,73 +115,102 @@ var mentorsArray = [
         ]
     }
 ]
-const tableFunction = () => {
-        let dataTable = document.createElement("table")
-        dataTable.className="table table-striped "
-        document.body.appendChild(dataTable)
 
-            const tableHeaderFunction = () => {
-                let tableHeader = document.createElement("thead")
-                dataTable.appendChild(tableHeader)
-                let tableHeaderRow = document.createElement("tr")
-                tableHeader.appendChild(tableHeaderRow)
-                let headerName = [ "MENTOR", "HTML", "CSS", "JS", "REACTJS", "AVERAGE"]
+let tableHeadArray = [
+    "#",
+    "NAME",
+    "HTML",
+    "CSS",
+    "JS",
+    "REACT",
+    "AVERAGE"
+]
 
-                headerName.forEach(item => {
-                    let rowHeader = document.createElement("th");
-                    tableHeaderRow.appendChild(rowHeader)
-                    let rowHeaderName = document.createTextNode(item)
-                    rowHeader.appendChild(rowHeaderName)
-                })
-            }
+let table = document.getElementById("table-mentors")
+table.classList.add("table",  "table-striped")
 
-            const tableBodyFunction = () => {
+let tableHead = document.createElement("thead")
+table.appendChild(tableHead)
+tableHead.classList.add("thead-dark")
 
-                let tableBody = document.createElement("tbody")
-                dataTable.appendChild(tableBody)
+let tableBody = document.createElement("tbody")
+table.appendChild(tableBody)
 
-                mentorsArray.forEach(item => {
-                    let tableBodyRow = document.createElement("tr")
-                    tableBody.appendChild(tableBodyRow)
-                    // nombres de los mentores
-                    let nameRow = document.createElement("td")
-                    let nameRowText = document.createTextNode(item.name)
-                    nameRow.appendChild(nameRowText)
-                    tableBodyRow.appendChild(nameRow)
-                    //scores de los mentores
-                    item.scores.forEach(item => {
-                        let tableBodyRowScore = document.createElement("td")
-                        tableBodyRow.appendChild(tableBodyRowScore)
-                        let tableBodyRowScoreText = document.createTextNode(item.score)
-                        tableBodyRowScore.appendChild(tableBodyRowScoreText)
-                    })
-                    //promedio de los scores
-                    let average = document.createElement("td")
-                    tableBodyRow.appendChild(average)
+let tableFoot = document.createElement("tfoot")
+table.appendChild(tableFoot)
 
-                   item.scores.reduce((accum,current) => {
-                       let avg = accum + current.score
-                       return avg
-                       console.log(avg)
+const tableHeadFunction = () => {
 
-                   },0)
-                    
-                    
+    let tableHeadRow = document.createElement("tr")
+    tableHead.appendChild(tableHeadRow)
 
-                })
+    tableHeadArray.forEach( item => {
 
-            }
-        tableHeaderFunction()
-        tableBodyFunction()
+        let tableHeadTh = document.createElement("th")
+        tableHeadRow.appendChild(tableHeadTh)
+
+        let tableHeadThText = document.createTextNode(item)
+        tableHeadTh.appendChild(tableHeadThText)
+    })    
 }
-tableFunction()
+tableHeadFunction()
 
-const popo = () => mentorsArray.forEach (item => console.log(item.scores.reduce((accum,current) => accum + current.score,0)))
-    
+let totalAverage = []
+const tableBodyFunction = () => {
 
-console.log(popo())   
+    mentorsArray.forEach( (item,index) => {
+
+        //se crea el row
+        let tableBodyRow = document.createElement("tr")
+        tableBody.appendChild(tableBodyRow)
+
+        //se crea el row #
+        let tableBodyRowNumberTd = document.createElement("td")
+        tableBodyRow.appendChild(tableBodyRowNumberTd)
+
+        let tableBodyRowNumberTdText = document.createTextNode(index+1)
+        tableBodyRowNumberTd.appendChild(tableBodyRowNumberTdText)
+
+        // se cre el name td 
+        let tableBodyRowNameTd = document.createElement("td")
+        tableBodyRow.appendChild(tableBodyRowNameTd)
+
+        let tableBodyRowNameTdText = document.createTextNode(item.name)
+        tableBodyRowNameTd.appendChild(tableBodyRowNameTdText)
+
+        //se crean los scores td
+        item.scores.forEach( scores => {
+
+            let tableBodyRowScoresTd = document.createElement("td")
+            tableBodyRow.appendChild(tableBodyRowScoresTd)
+
+            let tableBodyRowScoresTdText = document.createTextNode(scores.score)
+            tableBodyRowScoresTd.appendChild(tableBodyRowScoresTdText)
+        })
+
+        //se genera el reduce
+        let tableBodyRowAverage= item.scores.reduce((accum,current) => accum + current.score/item.scores.length,0)
+        // se crean los average td
+        let tableBodyRowAverageTd = document.createElement("td")
+        tableBodyRow.appendChild(tableBodyRowAverageTd)
+        let tableBodyRowAverageTdText = document.createTextNode(tableBodyRowAverage)
+        tableBodyRowAverageTd.appendChild(tableBodyRowAverageTdText)
+        
+        totalAverage.push(tableBodyRowAverage)
+        
+    })
+}
+tableBodyFunction()
+
+totalAverage= (totalAverage.reduce((accum,current) => accum + current /totalAverage.length,0)).toFixed(2)
+let totalAverageTd = document.getElementById("table-foot")
+let totalAverageTdText = document.createTextNode(totalAverage)
+totalAverageTd.appendChild(totalAverageTdText)
+totalAverageTd.classList.add("bg-dark")
+totalAverageTd.style.color = "white"
 
 
-    
+
+
     
      
