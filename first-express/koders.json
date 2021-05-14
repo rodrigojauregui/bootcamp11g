@@ -1,0 +1,46 @@
+{
+  "koders": [
+    {
+      "id": 2,
+      "name": "Walter",
+      "gender": "m"
+    },
+    {
+      "id": 3,
+      "name": "limon",
+      "gender": "f"
+    },
+    {
+      "id": 4,
+      "name": "Demian",
+      "gender": "m"
+    },
+    {
+      "id": 5,
+      "name": "Silvi",
+      "gender": "f"
+    }
+  ],
+  "mentors": [
+    {
+      "id": 1,
+      "name": "Oso",
+      "modulo": "hello koders"
+    },
+    {
+      "id": 2,
+      "name": "Mel",
+      "modulo": "hello koders"
+    },
+    {
+      "id": 3,
+      "name": "Isra",
+      "modulo": "Maquetado"
+    },
+    {
+      "id": 4,
+      "name": "Charles",
+      "modulo": "Back-end"
+    }
+  ]
+}
